@@ -9,6 +9,12 @@ proc skip() =
   while len(input) > idx and isSpaceAscii(input[idx]):
     inc(idx)
 
+proc strChr(input: string): bool =
+  for i in input:
+    if input[idx] == i:
+      return true
+  return false
+
 proc eval(): int =
   skip()
 
@@ -20,7 +26,7 @@ proc eval(): int =
       inc(idx)
     return val
 
-  if input[idx] == '+' or input[idx] == '-':
+  if strChr("+-*/"):
     var op = input[idx]
     inc(idx)
     var a = eval()
@@ -30,6 +36,10 @@ proc eval(): int =
       return a + b
     of '-':
       return a - b
+    of '*':
+      return a * b
+    of '/':
+      return a div b
     else:
       quit(fmt"invalid character {op}")
   

@@ -32,5 +32,8 @@ assert '+ 1 2' 3
 assert '+ 5 10' 15
 assert '+ 100 200' 300
 assert '- 3 2' 1
+assert '- 100 200' -100
+assert '* 2 3' 6
+assert '/ 10 5' 2
 
 echo OK
