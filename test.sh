@@ -27,9 +27,10 @@ assert '1 2 3' '1
 # 2
 # 3'
 
-echo " === operator ==="
+echo " === arithmetic operators ==="
 assert '+ 1 2' 3
 assert '+ 5 10' 15
 assert '+ 100 200' 300
+assert '- 3 2' 1
 
 echo OK

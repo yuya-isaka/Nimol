@@ -12,7 +12,7 @@ proc skip() =
 proc eval(): int =
   skip()
 
-  if len(input) > idx and isDigit(input[idx]):
+  if isDigit(input[idx]):
     var val = int(input[idx]) - int('0')
     inc(idx)
     while len(input) > idx and isDigit(input[idx]):
@@ -20,9 +20,18 @@ proc eval(): int =
       inc(idx)
     return val
 
-  if input[idx] == '+':
+  if input[idx] == '+' or input[idx] == '-':
+    var op = input[idx]
     inc(idx)
-    return eval() + eval()
+    var a = eval()
+    var b = eval()
+    case op
+    of '+':
+      return a + b
+    of '-':
+      return a - b
+    else:
+      quit(fmt"invalid character {op}")
   
   quit(fmt"invalid character {input[idx]}")
 
