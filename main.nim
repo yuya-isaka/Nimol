@@ -6,6 +6,8 @@ var input: seq[char]
 var idx: int
 var function = newSeq[seq[char]](100) # !使い方をまだよくわかっていない
 
+#-----------------------------------------------------------------------
+
 proc skip() =
   while len(input) > idx and isSpaceAscii(input[idx]):
     inc(idx)
@@ -28,6 +30,8 @@ proc expect(c: char) =
     quit(fmt"{c} expected but got {input[idx]}")
   inc(idx)
 
+#----------------------------------------------------------------------
+
 proc eval(args: seq[int]): int
 
 proc evalString(code: seq[char], args: seq[int]): int =
@@ -42,6 +46,8 @@ proc evalString(code: seq[char], args: seq[int]): int =
   input = orig
   idx = orig2
   return val
+
+#------------------------------------------------------------------------------------
 
 # !再帰下降法, 構文解析のテクニック
 proc eval(args: seq[int]): int =
@@ -84,7 +90,6 @@ proc eval(args: seq[int]): int =
       inc(i)
     expect(')')
     return evalString(function[int(name) - int('A')], newargs)
-
 
   # *Literal Numbers
   if isDigit(input[idx]):
