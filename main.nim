@@ -4,7 +4,7 @@ import strutils
 
 var input: seq[char]
 var idx: int
-var function = newSeq[seq[char]](100) # 使い方をまだよくわかっていない
+var function = newSeq[seq[char]](100) # !使い方をまだよくわかっていない
 
 proc skip() =
   while len(input) > idx and isSpaceAscii(input[idx]):
@@ -20,7 +20,7 @@ proc readUntil(c: char, buf: var seq[char]) =
   while input[idx] != c:
     buf.add(input[idx])
     inc(idx)
-  buf.add('\n')
+  # buf.add('\n')
   inc(idx)
 
 proc expect(c: char) =
@@ -28,41 +28,62 @@ proc expect(c: char) =
     quit(fmt"{c} expected but got {input[idx]}")
   inc(idx)
 
-proc eval(arg: int): int
+proc eval(args: seq[int]): int
 
-proc evalString(code: seq[char], arg: int): int =
+proc evalString(code: seq[char], args: seq[int]): int =
   var orig = input
   var orig2 = idx
   input = code
   idx = 0
-  var val = eval(arg)
+  var val: int
+  while len(input) > idx: # !関数を実行する時は1番最初の式だけじゃなくて全部を実行したい
+    val = eval(args)
+    inc(idx)
   input = orig
   idx = orig2
   return val
 
 # !再帰下降法, 構文解析のテクニック
-proc eval(arg: int): int =
+proc eval(args: seq[int]): int =
   skip()
 
   # *Function parameter
-  if strChr(".", input[idx]):
+  if 'a' <= input[idx] and input[idx] <= 'z':
+    var tmp = args[int(input[idx]) - int('a')]
     inc(idx)
-    return arg
+    return tmp
+
+  # !上にないといけない
+  # *Built-int Function
+  if input[idx] == 'P':
+    inc(idx)
+    expect('(')
+    var val = eval(args)
+    expect(')')
+    echo fmt"{val}"
+    return val
 
   # *Funciton definition
   if 'A' <= input[idx] and input[idx] <= 'Z' and input[idx+1] == '[':
     var name: char = input[idx]
     idx += 2
     readUntil(']', function[int(name)-int('A')])
-    return eval(arg)
+    return eval(args)
 
   # *Function application
   if 'A' <= input[idx] and input[idx] <= 'Z' and input[idx+1] == '(':
+    var newargs = newSeq[int](26)
     var name: char = input[idx]
     idx += 2
-    var newarg = eval(arg)
+
+    var i = 0
+    skip()
+    while input[idx] != ')':
+      skip()
+      newargs[i] = eval(args)
+      inc(i)
     expect(')')
-    return evalString(function[int(name) - int('A')], newarg)
+    return evalString(function[int(name) - int('A')], newargs)
 
 
   # *Literal Numbers
@@ -78,8 +99,8 @@ proc eval(arg: int): int =
   if strChr("+-*/", input[idx]):
     var op = input[idx]
     inc(idx)    # !ここで１文字進める
-    var a = eval(arg)    # !重要！ op 式 式 という形が期待されている
-    var b = eval(arg)
+    var a = eval(args)    # !重要！ op 式 式 という形が期待されている
+    var b = eval(args)
     case op
     of '+':
       return a + b
@@ -100,8 +121,9 @@ proc main() =
   for i in commandLineParams()[0]:
     input.add(i)
 
+  var tmp = newSeq[int]() #!ダミー
   while len(input) > idx:
-    echo fmt"{eval(0)}"
+    echo fmt"{eval(tmp)}"
   quit(0)
 
 main()

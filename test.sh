@@ -42,12 +42,20 @@ assert '* * 3 3 * 3 3' 81
 assert '* * 3 3 + 3 1' 36
 
 echo " === functions ==="
-assert 'F[+ . .] F(1)' 2
-assert 'F[* 2 .] F(3)' 6
-assert 'F[/ 100 .] F(2)' 50
-assert 'F[* . .] F(F(2))' 16
-assert 'F[* . .] F(F(F(2)))' 256
-assert 'F[* . .] G[+ F(3) .] G(3)' 12
+assert 'F[+ a a] F(1)' 2
+assert 'F[* 2 a] F(3)' 6
+assert 'F[/ 100 a] F(2)' 50
+assert 'F[* a a] F(F(2))' 16
+assert 'F[* a a] F(F(F(2)))' 256
+assert 'F[* a a] G[+ F(3) a] G(3)' 12
+assert 'F[* a b] F(2 3)' 6
+
+echo " === built-in functions ==="
+assert 'P(5)' '5
+5'
+
+assert 'P(3)' '3
+3'
 
 echo OK
 
