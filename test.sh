@@ -47,6 +47,7 @@ assert 'F[* 2 .] F(3)' 6
 assert 'F[/ 100 .] F(2)' 50
 assert 'F[* . .] F(F(2))' 16
 assert 'F[* . .] F(F(F(2)))' 256
+assert 'F[* . .] G[+ F(3) .] G(3)' 12
 
 echo OK
 
