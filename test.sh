@@ -41,4 +41,13 @@ assert '+ 1 + 2 3' 6
 assert '* * 3 3 * 3 3' 81
 assert '* * 3 3 + 3 1' 36
 
+echo " === functions ==="
+assert 'F[+ . .] F(1)' 2
+assert 'F[* 2 .] F(3)' 6
+assert 'F[/ 100 .] F(2)' 50
+assert 'F[* . .] F(F(2))' 16
+assert 'F[* . .] F(F(F(2)))' 256
+
 echo OK
+
+
