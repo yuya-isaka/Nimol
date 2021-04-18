@@ -1,0 +1,35 @@
+#!/bin/bash
+
+assert() {
+    input="$1"
+    expected="$2"
+
+    actual=$(./main "$input")
+
+    if [ "$actual" = "$expected" ]; then
+        echo "$input => $actual"
+    else
+        echo "$input => $expected expected, but got $actual"
+        exit 1
+    fi
+}
+
+nim c main.nim
+
+echo " === basic ==="
+assert 0 0
+assert 1 1
+assert 99 99
+assert '1 2 3' '1
+2
+3'
+# assert '1 2 3   ' '1
+# 2
+# 3'
+
+echo " === operator ==="
+assert '+ 1 2' 3
+assert '+ 5 10' 15
+assert '+ 100 200' 300
+
+echo OK
