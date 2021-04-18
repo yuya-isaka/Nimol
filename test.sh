@@ -36,4 +36,9 @@ assert '- 100 200' -100
 assert '* 2 3' 6
 assert '/ 10 5' 2
 
+assert '+ + + 1 2 3 4' 10
+assert '+ 1 + 2 3' 6
+assert '* * 3 3 * 3 3' 81
+assert '* * 3 3 + 3 1' 36
+
 echo OK

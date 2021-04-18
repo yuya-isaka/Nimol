@@ -9,9 +9,9 @@ proc skip() =
   while len(input) > idx and isSpaceAscii(input[idx]):
     inc(idx)
 
-proc strChr(input: string): bool =
+proc strChr(input: string, c: char): bool =
   for i in input:
-    if input[idx] == i:
+    if c == i:
       return true
   return false
 
@@ -26,10 +26,10 @@ proc eval(): int =
       inc(idx)
     return val
 
-  if strChr("+-*/"):
+  if strChr("+-*/", input[idx]):
     var op = input[idx]
-    inc(idx)
-    var a = eval()
+    inc(idx)    # !ここで１文字進める
+    var a = eval()    # !重要！ op 式 式 という形が期待されている
     var b = eval()
     case op
     of '+':
