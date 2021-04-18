@@ -1,4 +1,4 @@
-# 自作言語をNimで書いてみよう
+# 自作言語をNimで書いてみよう(nimol)
 > 参考：https://www.youtube.com/watch?v=JAtN0TGrNE4
 
 - 関数名は，１文字 & 大文字
