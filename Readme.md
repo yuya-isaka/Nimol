@@ -1,10 +1,11 @@
 # nimol: A tiny original programming language written in Nim
 > reference： https://www.youtube.com/watch?v=JAtN0TGrNE4
 
-### The language can display the Fibonacci sequence while calculating it recursively.
-
 ## Prerequisites
 - Having nim installed.
+
+## How to run
+- Open the folder and type ```./test.sh``` in the terminal.
 
 ## Features
 - S-expression
@@ -12,6 +13,4 @@
 - Functions are defined with [] and applied with ().
 - Function arguments are mapped to lowercase a-z.
 - The built-in function P prints the value.
-
-## How to run
-- Open the folder and type ```./test.sh``` in the terminal.
+- The language can display the Fibonacci sequence while calculating it recursively.
