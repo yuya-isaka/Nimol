@@ -6,4 +6,5 @@ The language can display the Fibonacci sequence while calculating it recursively
 - S-expression
 - Function names are single letter & uppercase
 - Functions are defined with [] and applied with ()
+- Function arguments are mapped to lowercase a-z.
 - The built-in function P prints the value.
