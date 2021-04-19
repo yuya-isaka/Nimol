@@ -4,7 +4,7 @@ assert() {
     input="$1"
     expected="$2"
 
-    actual=$(./main "$input")
+    actual=$(./nimol "$input")
 
     if [ "$actual" = "$expected" ]; then
         echo "$input => $actual"
@@ -14,7 +14,7 @@ assert() {
     fi
 }
 
-nim c main.nim
+nim c nimol.nim
 
 echo " === basic ==="
 assert 0 0
