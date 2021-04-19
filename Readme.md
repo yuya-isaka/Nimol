@@ -1,6 +1,9 @@
-# 自作言語をNimで書いてみよう(nimol)
-> 参考：https://www.youtube.com/watch?v=JAtN0TGrNE4
+# nimol: A tiny original programming language written in Nim
+> reference： https://www.youtube.com/watch?v=JAtN0TGrNE4
 
-- 関数名は，１文字 & 大文字
-- 関数は，[]で定義，()で適用
-- buil-in関数は大文字のP
+The language can display the Fibonacci sequence while calculating it recursively.
+
+- S-expression
+- Function names are single letter & uppercase
+- Functions are defined with [] and applied with ()
+- The built-in function P prints the value.
