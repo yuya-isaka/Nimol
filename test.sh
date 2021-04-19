@@ -23,9 +23,6 @@ assert 99 99
 assert '1 2 3' '1
 2
 3'
-# assert '1 2 3   ' '1
-# 2
-# 3'
 
 echo " === arithmetic operators ==="
 assert '+ 1 2' 3
