@@ -1,5 +1,4 @@
 # nimol: A tiny original programming language written in Nim
-> reference： https://www.youtube.com/watch?v=JAtN0TGrNE4
 
 ## Prerequisites
 - Having [nim](https://nim-lang.org/) installed.
@@ -14,3 +13,6 @@
 - Function arguments are mapped to lowercase a-z.
 - The built-in function P prints the value.
 - **The language can display the Fibonacci sequence while calculating it recursively.**
+
+## Reference
+- https://www.youtube.com/watch?v=JAtN0TGrNE4
