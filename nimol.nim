@@ -29,8 +29,6 @@ proc expect(c: char) =
     quit(fmt"{c} expected but got {input[idx]}")
   inc(idx)
 
-#-----------------------------------------------------------------------------------
-
 proc eval(args: seq[int]): int
 
 proc evalString(code: seq[char], args: seq[int]): int =
