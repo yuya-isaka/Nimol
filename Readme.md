@@ -1,4 +1,4 @@
-# nimol: A tiny original programming language written in Nim
+# Nimol: A tiny original programming language written in Nim
 
 ## Prerequisites
 - Having [nim](https://nim-lang.org/) installed.
